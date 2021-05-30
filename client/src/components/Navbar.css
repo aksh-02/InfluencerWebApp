@@ -1,0 +1,28 @@
+.navbar {
+	overflow: hidden;
+	background-color: #20232a;
+}
+
+.navbar-right {
+	float: right;
+}
+
+.navbar a{
+	margin: 1em;
+	float: left;
+	color: white;
+}
+
+.navbar a:hover {
+	color: rgb(168, 207, 212);
+	cursor: pointer;
+}
+
+.navbar button {
+	height: 2em;
+	background-color: rgb(161, 149, 209);
+	border: 2px solid black;
+	border-radius: 5px;
+	margin: 1em;
+	cursor: pointer;
+}

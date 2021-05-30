@@ -1,0 +1,30 @@
+.messagesBox {
+	position: fixed;
+	background-color: white;
+	border: 1px solid black;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	bottom: 2%;
+	right: 2%;
+	width: 300px;
+}
+
+.messagesBox button {
+	border-radius: 5px;
+	border: none;
+	margin: 5px;
+	position: relative;
+	left: 50px;
+	background-color: rgb(209, 101, 12);
+	cursor: pointer;
+}
+
+.messagesBox header {
+	font-weight: bold;
+	height: 40px;
+}
+
+.messagesBox section {
+	display: inline;
+	margin: 1em;
+}

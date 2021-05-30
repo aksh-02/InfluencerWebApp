@@ -1,0 +1,28 @@
+.createJobForm {
+	margin: 30px;
+	border: 2px solid black;
+	border-radius: 0.4em;
+	background-color: rgb(250, 184, 184);
+	width: 40%;
+	display: inline-block;
+}
+
+.createJobForm input {
+	width: 80%;
+	margin: 1em;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+}
+
+.createJobForm button {
+	display: block;
+	background-color: #139649;
+	margin: 1em auto;
+	padding: 12px;
+	border: 1px solid black;
+	border-radius: 4px;
+	cursor: pointer;
+}

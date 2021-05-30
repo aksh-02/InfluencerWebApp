@@ -1,0 +1,25 @@
+.messageLI {
+	border: 1px solid grey;
+	padding: 6px;
+	cursor: pointer;
+}
+
+.messageLI:hover {
+	background-color: lightgrey;
+}
+
+.msgPartner {
+	font-weight: bold;
+	font-style: italic;
+	position: relative;
+	left: -75px;
+}
+
+.msgText {
+	text-align: left;
+	display: block;
+}
+
+.msgDate {
+	float: right;
+}

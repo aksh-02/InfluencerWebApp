@@ -1,0 +1,47 @@
+.center {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.influencerLI {
+	border: 1px solid black;
+	height: 5em;
+	width: 80%;
+	background: linear-gradient(#e68888, #93b36a);
+	margin: 1em auto;
+	padding: 1em;
+	position: relative;
+}
+
+.influencerLI span{
+	font-weight: bold;
+}
+
+.influencerLI button{
+	position: absolute;
+	right:    0;
+	bottom:   0;
+}
+
+.influencerLIImage {
+	float: left;
+	border-radius: 50%;
+	border: 4px solid darkgray;
+	width: 5em;
+	height: 5em;
+}
+
+.social {
+	float: right;
+	padding: 2em;
+}
+
+.influencerLI span {
+	margin-left: 3em;
+	padding: 2em;
+	float: left;
+}
+
+.influencerLI a{
+	margin: 1em;
+}

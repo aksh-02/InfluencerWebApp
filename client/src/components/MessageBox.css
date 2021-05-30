@@ -1,0 +1,69 @@
+.messageBox {
+	border: 1px solid black;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background-color: white;
+	height: 320px;
+	width: 300px;
+	margin: 0 auto;
+	position: fixed;
+	bottom: 2%;
+	right: 340px;
+}
+
+.messageBox header {
+	font-weight: bold;
+	height: 40px;
+	border-bottom: 2px solid grey;
+}
+
+.messageBox section {
+	display: inline;
+	margin: 1em;
+}
+
+.messageBox button {
+	border-radius: 5px;
+	border: none;
+	margin: 5px;
+	background-color: rgb(13, 136, 218);
+	cursor: pointer;
+}
+
+.prevMessages {
+	height: 200px;
+	background-color: rgb(238, 192, 136);
+	overflow-y: auto;
+	position: relative;
+}
+
+.close {
+	position: relative;
+	left: 70px;
+}
+
+.sent {
+	width: max-content;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: white;
+	color: black;
+	margin: 4px;
+	padding: 2px;
+}
+
+.received {
+	width: max-content;
+	border: 1px solid white;
+	border-radius: 4px;
+	background-color: darkslategrey;
+	color: white;
+	margin: 4px;
+	padding: 4px;
+}
+
+.messageBox form{
+	display: block;
+	margin: 0.8em;
+
+}

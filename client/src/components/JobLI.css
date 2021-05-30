@@ -1,0 +1,29 @@
+.jobLI {
+	border: 1px solid black;
+	width: 80%;
+	background: linear-gradient(#e68888, #999ecf);
+	margin: 1em auto;
+	padding: 1em;
+	position: relative;
+}
+
+.jobLIHeader section{
+	text-align: left;
+	margin-left: 5px;
+}
+
+.jobLITitle {
+	font-weight: bold;
+}
+
+.jobLIHeader{
+	margin-top: 12px;
+	background-color: lightgrey;
+}
+
+.jobLI button{
+	position: absolute;
+	right:    0;
+	top: 0;
+}
+
