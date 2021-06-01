@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import InfluencerLI from './InfluencerLI'
+import './Helper.css'
 
 const VerifiedInfluencers = () => {
 	const [vInfl, setVInfl] = useState([])
@@ -16,7 +17,7 @@ const VerifiedInfluencers = () => {
 	}, [])
 
 	return (
-		<div>
+		<div className="longList">
 			{vInfl.map((infl) => <InfluencerLI key={infl._id} influencer={infl} />)}
 		</div>
 	)

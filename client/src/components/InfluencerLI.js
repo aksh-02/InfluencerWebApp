@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import ReactDOM from 'react-dom'
 import './InfluencerLI.css'
 import MessageBox from './MessageBox'
 

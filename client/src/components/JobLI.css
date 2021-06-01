@@ -19,6 +19,7 @@
 .jobLIHeader{
 	margin-top: 12px;
 	background-color: lightgrey;
+	cursor: pointer;
 }
 
 .jobLI button{

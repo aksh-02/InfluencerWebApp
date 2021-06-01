@@ -20,15 +20,22 @@ type User struct {
 	UpdatedAt time.Time          `json:"updatedAt"`
 }
 
+type SocialMediaProfiles struct {
+	Instagram string `json:"instagram,omitempty"`
+	Twitter   string `json:"twitter,omitempty"`
+	Youtube   string `json:"youtube,omitempty"`
+}
+
 type Influencer struct {
-	Id             primitive.ObjectID `json:"_id,omitempty" bson:"_id,omitempty"`
-	Username       string             `json:"username" bson:"username"`
-	Name           string             `json:"name"`
-	Verified       bool               `json:"verified"`
-	Instagram      string             `json:"instagram,omitempty"`
-	Twitter        string             `json:"twitter,omitempty"`
-	Youtube        string             `json:"youtube,omitempty"`
-	ProfilePicture string             `json:"profilePicture,omitempty"`
+	Id             primitive.ObjectID  `json:"_id,omitempty" bson:"_id,omitempty"`
+	Username       string              `json:"username" bson:"username"`
+	Name           string              `json:"name" bson:"name"`
+	About          string              `json:"about" bson:"about"`
+	Verified       bool                `json:"verified" bson:"verified"`
+	Country        string              `json:"country" bson:"country"`
+	Domains        []string            `json:"domains" bson:"domains"`
+	Social         SocialMediaProfiles `json:"social" bson:"social"`
+	ProfilePicture string              `json:"profilePicture,omitempty" bson:"profilePicture,omitempty"`
 }
 
 type Message struct {

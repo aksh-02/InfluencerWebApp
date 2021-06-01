@@ -1,18 +1,36 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import {useSelector} from 'react-redux'
-
+import Country from './Country'
+import Domains from './Domains'
 
 
 function ApplyAsInfluencer() {
     const username = useSelector(state => state.username)
 	console.log("apply", username)
 
-	const [name, setName] = useState("")
+	const [influencer, setInfluencer] = useState({
+		name: "",
+		about: "",
+		country: "",
+		domains: [],
+	})
+
+	const handleChange = (e) => {
+		setInfluencer({...influencer, [e.target.name]:e.target.value})
+	}
+
+	const [social, setSocial] = useState({
+		instagram: "",
+		twitter: "",
+		youtube: ""
+	})
+
+	const socialHandleChange = (e) => {
+		setSocial({...social, [e.target.name]:e.target.value})
+	}
+
 	const [picture, setPicture] = useState(null)
-	const [instagram, setInstagram] = useState("")
-	const [twitter, setTwitter] = useState("")
-	const [youtube, setYoutube] = useState("")
 
 	const endpoint = "http://localhost:8080/"
 	const applySubmit = (event) => {
@@ -20,10 +38,15 @@ function ApplyAsInfluencer() {
 			endpoint+"apply",
 			{
 				username: username,
-				name: name,
-				instagram: instagram,
-				twitter: twitter,
-				youtube: youtube
+				name: influencer.name,
+				country: influencer.country,
+				domains: influencer.domains,
+				about: influencer.about,
+				social: {
+					instagram: social.instagram,
+					twitter: social.twitter,
+					youtube: social.youtube
+				}
 			},
 			{
 				headers: {
@@ -65,19 +88,24 @@ function ApplyAsInfluencer() {
 		<div>
 			<h2>Apply as an Influencer</h2>
 			<form className="authForm" onSubmit={applySubmit}>
-				<input placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} type="text" />
+				<input placeholder="Name" name="name" value={influencer.name} onChange={handleChange} type="text" />
+				<textarea placeholder="About" name="about" value={influencer.about} onChange={handleChange} type="text" />
 				<div className="fileInput">
 					<span>Profile Picture </span>
 					<input onChange={(e) => setPicture(e.target.files[0])} type="file" />
 				</div>
-				<input placeholder="Instagram" value={instagram} onChange={(e) => setInstagram(e.target.value)} type="text" />				
-				<input placeholder="Twitter" value={twitter} onChange={(e) => setTwitter(e.target.value)} type="text" />
-				<input placeholder="Youtube" value={youtube} onChange={(e) => setYoutube(e.target.value)} type="text" />
+				<Country name="country" handlechange={handleChange} />
+				<Domains name="domains" handlechange={(e) => {
+					let value = Array.from(e.target.selectedOptions, option => option.value)
+					setInfluencer({...influencer, domains:value})
+					}} />
+				<input placeholder="Instagram" name="instagram" value={social.instagram} onChange={socialHandleChange} type="text" />
+				<input placeholder="Twitter" name="twitter" value={social.twitter} onChange={socialHandleChange} type="text" />
+				<input placeholder="Youtube" name="youtube" value={social.youtube} onChange={socialHandleChange} type="text" />
 				<button type="submit">Submit</button>
 			</form>
 		</div>
 	)
-
 }
 
 export default ApplyAsInfluencer

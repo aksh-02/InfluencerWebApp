@@ -17,6 +17,17 @@
 	resize: vertical;
 }
 
+.authForm textarea {
+	height: 5em;
+	width: 80%;
+	margin: 1em;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+}
+
 .fileInput {
 	width: 80%;
 	margin: 1em;
@@ -26,7 +37,7 @@
 	box-sizing: border-box;
 	resize: vertical;
 	background-color: white;
-	margin: 0 auto;
+	margin: 15px auto;
 }
 .authForm button {
 	display: block;
@@ -36,4 +47,40 @@
 	border: 1px solid black;
 	border-radius: 4px;
 	cursor: pointer;
+}
+
+.country span {
+	display: block;
+}
+
+.country select {
+	width: 70%;
+}
+
+.country {
+	width: 80%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: white;
+	margin: 15px auto;
+}
+
+.domains span {
+	display: block;
+}
+
+.domains select {
+	width: 70%;
+}
+
+.domains {
+	width: 80%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	background-color: white;
+	margin: 15px auto;
 }

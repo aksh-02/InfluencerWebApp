@@ -17,7 +17,7 @@ const ActiveJobs = () => {
 	}, [])
 
 	return (
-		<div>
+		<div className="longList">
 			{aJobs.map((job) => <JobLI key={job._id} job={job} />)}
 		</div>
 	)

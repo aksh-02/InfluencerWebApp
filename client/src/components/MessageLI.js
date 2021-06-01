@@ -23,7 +23,7 @@ function MessageLI(props) {
 		<div className="messageLI" onClick={() => setMessageBox(!messageBox)}>
 			<span className="msgPartner">{props.partner}</span>
 			<span className="msgDate">{props["data"][props["data"].length-1]["timestamp"].slice(0, 10)}</span>
-			<span className="msgText">{(props["data"][props["data"].length-1]["sender"] == username)? "You":props["data"][props["data"].length-1]["sender"]} : {props["data"][props["data"].length-1]["message"]}</span>
+			<span className="msgText">{(props["data"][props["data"].length-1]["sender"] === username)? "You":props["data"][props["data"].length-1]["sender"]} : {props["data"][props["data"].length-1]["message"]}</span>
 		</div>
 		{messageBox? <MessageBox close={() => setMessageBox(!messageBox)} receiver={props["partner"]}/> : null}
 		</>
