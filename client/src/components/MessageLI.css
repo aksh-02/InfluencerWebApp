@@ -1,5 +1,6 @@
 .messageLI {
 	border: 1px solid grey;
+	background: linear-gradient(#f1ca97, white);
 	padding: 6px;
 	cursor: pointer;
 }
@@ -12,7 +13,7 @@
 	font-weight: bold;
 	font-style: italic;
 	position: relative;
-	left: -75px;
+	left: -65px;
 }
 
 .msgText {

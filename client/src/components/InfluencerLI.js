@@ -10,7 +10,6 @@ function InfluencerLI(props) {
 	} catch {
 		
 	}
-	console.log(profilePicture)
 
 	return (
 		<>

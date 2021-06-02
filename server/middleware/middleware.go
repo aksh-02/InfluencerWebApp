@@ -3,46 +3,66 @@ package middleware
 import (
 	"context"
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 
 	"github.com/aksh-02/Influencers/server/models"
 	"github.com/gorilla/mux"
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
-	"go.mongodb.org/mongo-driver/mongo"
 )
 
 func GetAllInfluencers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
 
-	influencers := getInfluencersHelper()
+	influencers := getInfluencersHelper(nil)
 	json.NewEncoder(w).Encode(influencers)
 }
 
 func GetVerifiedInfluencers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 	w.Header().Set("Access-Control-Allow-Credentials", "true")
-	influencers := getInfluencersHelper(true)
+
+	u, err := url.Parse(r.URL.RequestURI())
+	if err != nil {
+		panic(err)
+	}
+
+	query, _ := url.ParseQuery(u.RawQuery)
+	fmt.Println("query", query)
+
+	influencers := getInfluencersHelper(query, true)
 	json.NewEncoder(w).Encode(influencers)
 }
 
 func GetUnVerifiedInfluencers(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
-	influencers := getInfluencersHelper(false)
+	influencers := getInfluencersHelper(nil, false)
 	json.NewEncoder(w).Encode(influencers)
 }
 
-func getInfluencersHelper(verified ...bool) []primitive.M {
-	var cur *mongo.Cursor
-	var err error
+func getInfluencersHelper(query map[string][]string, verified ...bool) []primitive.M {
+	var filter primitive.M
 	if len(verified) == 0 {
-		cur, err = models.InfluencersCollection.Find(context.Background(), bson.D{{}})
+		filter = bson.M{}
 	} else {
-		cur, err = models.InfluencersCollection.Find(context.Background(), bson.M{"verified": verified[0]})
+		filter = bson.M{"verified": verified[0]}
 	}
 
+	if val, ok := query["country"]; ok {
+		filter["country"] = val[0]
+	}
+
+	if val, ok := query["domains[]"]; ok {
+		filter["domains"] = bson.M{"$in": val}
+	}
+
+	fmt.Println("In getInfluencers filter", filter)
+
+	cur, err := models.InfluencersCollection.Find(context.Background(), filter)
 	if err != nil {
 		log.Fatal(err)
 	}

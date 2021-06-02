@@ -96,8 +96,8 @@ function ApplyAsInfluencer() {
 				</div>
 				<Country name="country" handlechange={handleChange} />
 				<Domains name="domains" handlechange={(e) => {
-					let value = Array.from(e.target.selectedOptions, option => option.value)
-					setInfluencer({...influencer, domains:value})
+					let values = Array.from(e.target.selectedOptions, option => option.value)
+					setInfluencer({...influencer, domains:values})
 					}} />
 				<input placeholder="Instagram" name="instagram" value={social.instagram} onChange={socialHandleChange} type="text" />
 				<input placeholder="Twitter" name="twitter" value={social.twitter} onChange={socialHandleChange} type="text" />

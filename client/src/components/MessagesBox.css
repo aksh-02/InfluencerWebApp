@@ -7,6 +7,7 @@
 	bottom: 2%;
 	right: 2%;
 	width: 300px;
+	margin-top: 10%;
 }
 
 .messagesBox button {
@@ -15,12 +16,15 @@
 	margin: 5px;
 	position: relative;
 	left: 50px;
-	background-color: rgb(209, 101, 12);
+	background-color: rgb(110, 223, 35);
 	cursor: pointer;
 }
 
 .messagesBox header {
 	font-weight: bold;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
+	background: linear-gradient(#1b37b4, #71a7f8);
 	height: 40px;
 }
 
