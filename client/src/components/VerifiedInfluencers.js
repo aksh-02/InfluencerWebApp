@@ -18,7 +18,6 @@ const VerifiedInfluencers = () => {
 
 	const endpoint = "http://localhost:8080/"
 	useEffect(() => {
-		console.log("oppppp", options)
 		axios.get(endpoint,
 		// {withCredentials: true}
 		{

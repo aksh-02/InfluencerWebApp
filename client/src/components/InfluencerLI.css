@@ -6,7 +6,7 @@
 .influencerLI {
 	border: 1px solid black;
 	height: 5em;
-	width: 80%;
+	width: 70%;
 	background: linear-gradient(#f39316, #f4f750);
 	margin: 1em auto;
 	padding: 1em;
@@ -17,10 +17,18 @@
 	font-weight: bold;
 }
 
-.influencerLI button{
+.msgBtn {
+	background-color: #319609;
+	color: white;
+	padding: 10px;
+	border: none;
 	position: absolute;
 	right:    0;
 	bottom:   0;
+}
+
+.msgBtn:hover {
+	cursor: pointer;
 }
 
 .influencerLIImage {
@@ -31,17 +39,43 @@
 	height: 5em;
 }
 
-.social {
-	float: right;
-	padding: 2em;
-}
-
 .influencerLI span {
 	margin-left: 3em;
 	padding: 2em;
 	float: left;
 }
 
-.influencerLI a{
-	margin: 1em;
+.dropBtn {
+	background-color: #3498DB;
+	color: white;
+	padding: 10px;
+	border: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.dropBtn:hover {
+	cursor: pointer;
+}
+
+.social {
+	position: absolute;
+	top: 30px;
+	right: -8%;
+	background-color: #b4a5a5;
+	min-width: 10%;
+	z-index: 1;
+}
+  
+.social a {
+	color: black;
+	border: 1px solid black;
+	padding: 8px;
+	text-decoration: none;
+	display: block;
+}
+  
+.social a:hover {
+	background-color: #ddd;
 }

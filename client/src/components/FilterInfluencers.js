@@ -40,7 +40,6 @@ function FilterInfluencers(props) {
 	const applyFilters = (event) => {
 	}
 
-	console.log("ops", options.country, options.domains)
 	return (
 		<div>
 			<button className="openBtn" onClick={() => setOpen(true)}>&#9776; Filter</button>
