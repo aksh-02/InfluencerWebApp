@@ -6,27 +6,27 @@ import reportWebVitals from './reportWebVitals';
 
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
-import toggleLoginReducer from './reducers/isLogged'
+import globalReducer from './reducers/globalReducer'
 
 
-let userData = {loggedIn: false, username: null}
+export let initialStore = {loggedIn: false, username: null, alert: false, alertMsg: ""}
 try {
   let username = JSON.parse(atob(document.cookie.split('; ').find(row => row.startsWith('token=')).split('.')[1]))["username"]
-  userData["username"] = username
-  userData["loggedIn"] = true
+  initialStore["username"] = username
+  initialStore["loggedIn"] = true
 } catch {
   console.log("username: No JWT token found")
 }
 
-console.log("In Index", userData)
+console.log("In Index", initialStore)
 
 // Redux STORE
-let store = createStore(toggleLoginReducer,
-  userData,
+let store = createStore(globalReducer,
+  initialStore,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 
 // subscribe adds a change listener. It's called any time an action is dispatched
-// store.subscribe(() => console.log(`LoggedIN: ${store.getState()}`))
+store.subscribe(() => console.log(`In Index getState: ${store.getState()}`))
 
 
 

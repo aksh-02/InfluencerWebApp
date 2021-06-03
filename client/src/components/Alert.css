@@ -1,0 +1,20 @@
+.alert {
+	position: fixed;
+	padding: 10px;
+	background-color: rgba(52, 212, 252, 0.6);
+	color: white;
+	top: 10px;
+	left: 40%;
+	right: 40%;
+	border-radius: 5px;
+}
+
+.alert-shown {
+	opacity: 1;
+	transition: all 250ms linear;
+  }
+  
+.alert-hidden {
+	opacity: 0;
+	transition: all 250ms linear 1.5s;
+}

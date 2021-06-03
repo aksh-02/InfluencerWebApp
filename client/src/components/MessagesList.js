@@ -29,7 +29,7 @@ function MessagesList() {
 			console.log("err", err)
 			return
 		})
-	}, [])
+	}, [username])
 
 
 	return (

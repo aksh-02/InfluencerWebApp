@@ -17,13 +17,13 @@ func Router() *mux.Router {
 	// authentication
 	router.HandleFunc("/signup", auth.SignUp).Methods("POST", "OPTIONS")
 	router.HandleFunc("/signin", auth.SignIn).Methods("POST", "OPTIONS")
-	router.HandleFunc("/logout", auth.Logout).Methods("GET", "OPTIONS")
+	router.HandleFunc("/logout", auth.IsAuthorized(auth.Logout)).Methods("GET", "OPTIONS")
 
 	// influencer application
-	router.HandleFunc("/apply", auth.ApplyAsInfluencer).Methods("POST", "OPTIONS")
+	router.HandleFunc("/apply", auth.IsAuthorized(auth.ApplyAsInfluencer)).Methods("POST", "OPTIONS")
 
 	// profile pic upload
-	router.HandleFunc("/upload", auth.InfluencerPic).Methods("POST", "OPTIONS")
+	router.HandleFunc("/upload", auth.IsAuthorized(auth.InfluencerPic)).Methods("POST", "OPTIONS")
 
 	// messaging
 	router.HandleFunc("/sendmessage", messaging.SendMessage).Methods("POST", "OPTIONS")

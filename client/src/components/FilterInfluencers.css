@@ -1,7 +1,7 @@
 .sidepanelOpen {
 	height: 300px;
 	width: 200px;
-	position: fixed;
+	position: absolute;
 	z-index: 1;
 	left: 0;
 	background-color: rgb(116, 103, 103);
@@ -10,7 +10,7 @@
 
 .sidepanelClosed{
 	width: 0px;
-	position: fixed;
+	position: absolute;
 	left: 0;
 	overflow-x: hidden;
 }
@@ -18,7 +18,8 @@
 .closeBtn {
 	position: absolute;
 	border-radius: 10%;
-	background-color: rgb(68, 165, 68);
+	background-color: #20232a;
+	color: white;
 	top: 3px;
 	right: 3px;
 	font-size: 25px;
@@ -30,7 +31,7 @@
 }
 
 .openBtn {
-	position: fixed; /* Stay in place */
+	position: absolute; /* Stay in place */
 	left: 0;
 	cursor: pointer;
 	background-color: rgb(68, 165, 68);

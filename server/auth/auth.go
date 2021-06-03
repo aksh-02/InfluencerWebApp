@@ -96,7 +96,7 @@ func SignIn(w http.ResponseWriter, r *http.Request) {
 	var tempUser models.User
 	if err := models.UsersCollection.FindOne(context.Background(), bson.M{"username": creds.Username, "password": creds.Password}).Decode(&tempUser); err != nil {
 		fmt.Println("Username or Password is incorrect")
-		json.NewEncoder(w).Encode("Username or Password is incorrect")
+		w.WriteHeader(http.StatusUnauthorized)
 		return
 	}
 
@@ -118,7 +118,6 @@ func IsAuthorized(endpoint http.HandlerFunc) http.HandlerFunc {
 			if err == http.ErrNoCookie {
 				fmt.Printf("No Cookie found for %v\n", endpoint)
 				w.WriteHeader(http.StatusUnauthorized)
-				http.Redirect(w, r, "/signin", http.StatusSeeOther)
 				return
 			}
 			w.WriteHeader(http.StatusBadRequest)
@@ -198,6 +197,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 
 func ApplyAsInfluencer(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", allowOrigin)
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 
 	var influencer models.Influencer
 	err := json.NewDecoder(r.Body).Decode(&influencer)
@@ -222,6 +222,7 @@ func ApplyAsInfluencer(w http.ResponseWriter, r *http.Request) {
 
 func InfluencerPic(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", allowOrigin)
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
 
 	r.ParseMultipartForm(10 << 20)
 	pictureFile, _, err := r.FormFile("influencerPic")

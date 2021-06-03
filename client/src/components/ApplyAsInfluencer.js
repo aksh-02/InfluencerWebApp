@@ -1,12 +1,14 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import {useSelector} from 'react-redux'
+import {useDispatch, useSelector} from 'react-redux'
 import Country from './Country'
 import Domains from './Domains'
+import { showAlertAction } from '../actions'
 
 
 function ApplyAsInfluencer() {
     const username = useSelector(state => state.username)
+	const dispatch = useDispatch()
 	console.log("apply", username)
 
 	const [influencer, setInfluencer] = useState({
@@ -32,8 +34,13 @@ function ApplyAsInfluencer() {
 
 	const [picture, setPicture] = useState(null)
 
+	// if user have already applied, don't upload his picture
+	const [applied, setApplied] = useState(false)
+
 	const endpoint = "http://localhost:8080/"
 	const applySubmit = (event) => {
+		event.preventDefault()
+
 		axios.post(
 			endpoint+"apply",
 			{
@@ -52,20 +59,33 @@ function ApplyAsInfluencer() {
 				headers: {
 				  'Content-Type': 'application/x-www-form-urlencoded'
 				},
-				// withCredentials: true
+				withCredentials: true
 		}).then(resp => {
 			console.log(resp)
+			if (resp.data === "You've already applied as an Influencer") {
+				setApplied(true)
+				dispatch(showAlertAction("You've already applied as an Influencer"))
+			} else if (resp.data === "You've successfully applied as an Influencer") {
+				dispatch(showAlertAction("You've successfully applied as an Influencer"))
+			}
 		}).catch(err => {
 			console.log("err", err)
 			return
 		})
 		
+		if (applied === true) {
+			setApplied(false)
+			return
+		}
 
 		const blob = new Blob([JSON.stringify({username:username})], {
 			type: 'application/json'
 		})
 
 		const formData = new FormData()
+		if (picture === null) {
+			return
+		}
 		formData.append('influencerPic', picture, picture.name)
 		formData.append('userData', blob)
 
@@ -75,13 +95,11 @@ function ApplyAsInfluencer() {
 			{
 				headers: {
 					'Content-Type': 'multipart/form-data',
-				  }
+				},
+				withCredentials: true
 		}).then(resp => {
 			console.log(resp, "influencerPic Uploaded Successfully")
 		}).catch(err => console.log("influencerPic err", err))
-
-		event.preventDefault()
-
 	}
 
 	return (

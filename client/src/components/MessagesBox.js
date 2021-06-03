@@ -4,7 +4,6 @@ import './MessagesBox.css'
 
 function MessagesBox() {
 	const [open, setOpen] = useState(false)
-	
 
 	return (
 		<div className="messagesBox">
@@ -13,7 +12,7 @@ function MessagesBox() {
 					Messaging
 				</section>
 				<section>
-					<button onClick={() => {setOpen(!open)}}>{open? "Close":"Open"}</button>
+					<button onClick={() => {setOpen(!open)}}>{open? "▼":"▲"}</button>
 				</section>
 			</header>
 			{open? <MessagesList /> : null}

@@ -16,7 +16,9 @@
 	margin: 5px;
 	position: relative;
 	left: 50px;
-	background-color: rgb(110, 223, 35);
+	background-color: #1a1c20;
+	color: white;
+	padding: 3px;
 	cursor: pointer;
 }
 

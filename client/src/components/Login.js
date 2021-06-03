@@ -1,18 +1,28 @@
-import React, {useState} from 'react'
-import {useHistory} from 'react-router-dom'
+import React, {useState, useEffect} from 'react'
+import {useHistory, useLocation} from 'react-router-dom'
 import axios from 'axios'
 import './Form.css'
-import {useSelector, useDispatch} from 'react-redux'
-import {toggleLoginAction} from '../actions'
+import {useDispatch} from 'react-redux'
+import {showAlertAction, toggleLoginAction} from '../actions'
 
 function Login() {
-    const loggedIn = useSelector(state => state.loggedIn)
-    console.log('login', loggedIn)
     const dispatch = useDispatch()
 
 	const [username, setUsername] = useState("")
 	const [password, setPassword] = useState("")
 	const history = useHistory()
+
+	const {state} = useLocation()
+	useEffect(() => {
+		if (state === undefined) {
+			return
+		} else if (state.from.pathname === "/apply") {
+			console.log("from apply")
+			dispatch(showAlertAction("Redirecting to login page"))
+		} else if (state.from.pathname === "/createjob") {
+			dispatch(showAlertAction("Redirecting to login page"))
+		}
+	}, [state])
 
 	const endpoint = "http://localhost:8080/"
 	const loginSubmit = (event) => {
@@ -31,8 +41,14 @@ function Login() {
 			}).then(resp => {
 				console.log(resp);
 				dispatch(toggleLoginAction())
+				dispatch(showAlertAction("You've successfully Logged IN"))
 				history.push("/")
-			}).catch(err => console.log("err", err))
+			}).catch(err => {
+				if (err.response.status === 401) {
+					dispatch(showAlertAction("Username or password is incorrect"))
+				}
+				console.log("err", err, err.response.status)
+			})
 		
 		event.preventDefault()
 

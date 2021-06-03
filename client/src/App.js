@@ -9,14 +9,18 @@ import MessagesBox from './components/MessagesBox';
 import {useSelector} from 'react-redux'
 import ActiveJobs from './components/ActiveJobs';
 import CreateJob from './components/CreateJob';
+import PrivateRoute from './components/PrivateRoute'
+import Alert from './components/Alert';
 
 
 function App() {
   const loggedIn = useSelector(state => state.loggedIn)
+
   return (
     <div className="App">
       <Router>
         <Navbar />
+        <Alert />
         <Switch>
           <Route path="/signup" exact>
             <Signup />
@@ -24,18 +28,18 @@ function App() {
           <Route path="/signin" exact>
             <Login />
           </Route>
-          <Route path="/apply" exact>
-            < ApplyAsInfluencer />
-          </Route>
+          <PrivateRoute path='/apply'>
+            <ApplyAsInfluencer />
+          </PrivateRoute>
           <Route path="/" exact>
             <VerifiedInfluencers />
           </Route>
           <Route path="/jobs" exact>
             <ActiveJobs />
           </Route>
-          <Route path="/createjob" exact>
+          <PrivateRoute path="/createjob" exact>
             <CreateJob />
-          </Route>
+          </PrivateRoute>
         </Switch>
         {loggedIn? <MessagesBox />:null}
       </Router>

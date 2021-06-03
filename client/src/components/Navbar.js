@@ -1,10 +1,9 @@
 import React from 'react'
-import {useHistory, withRouter} from 'react-router-dom'
+import {useHistory, withRouter, Link} from 'react-router-dom'
 import axios from 'axios';
 import './Navbar.css'
 import {useSelector, useDispatch} from 'react-redux'
 import {toggleLoginAction} from '../actions'
-import {Link} from "react-router-dom"
 
 function Navbar() {
     const loggedIn = useSelector(state => state.loggedIn)
@@ -31,7 +30,9 @@ function Navbar() {
                     <>
                     <Link to="/createjob">Create New Job</Link>
                     <Link to="/apply">Influencer Status</Link>
-                    <button onClick={logoutHandler}>Logout</button>
+                    <button onClick={logoutHandler}>
+                        <img className="logoutIcon" src='/logout.svg' alt='Logout' />
+                    </button>
                     </>
                     : 
                     <>
