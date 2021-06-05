@@ -1,0 +1,48 @@
+.prev {
+	padding: 8px;
+	margin: 5px;
+	background-color: rgb(68, 165, 68);
+	border: none;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 1em;
+	left: 42%;
+}
+
+.next{
+	padding: 8px;
+	margin: 5px;
+	background-color: rgb(68, 165, 68);
+	border: none;
+	border-radius: 5px;
+	position: absolute;
+	bottom: 1em;
+}
+
+.avgRating {
+	display: block;
+	border: none;
+	text-align: left;
+	margin: 12px;
+}
+
+.rating {
+	display: block;
+	border: none;
+	text-align: left;
+	margin: 12px;
+}
+
+.comments {
+	display: inline-block;
+	border: none;
+	text-align: left;
+	max-height: 10px;
+	margin: 12px;
+}
+
+.reviewer {
+	position: absolute;
+	right: 1em;
+	bottom: 2em;
+}

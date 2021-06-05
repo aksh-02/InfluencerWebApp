@@ -88,12 +88,12 @@ func getInfluencersHelper(query map[string][]string, verified ...bool) []primiti
 func GetInfluencer(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "http://localhost:3000")
 
-	id, _ := primitive.ObjectIDFromHex(mux.Vars(r)["id"])
-	filter := bson.M{"_id": id}
+	username := mux.Vars(r)["username"]
+	filter := bson.M{"username": username}
 
 	var influencer models.Influencer
 	if err := models.InfluencersCollection.FindOne(context.Background(), filter).Decode(&influencer); err != nil {
-		log.Fatal(err)
+		w.WriteHeader(http.StatusBadRequest)
 	}
 
 	json.NewEncoder(w).Encode(influencer)

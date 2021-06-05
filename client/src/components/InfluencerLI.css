@@ -13,8 +13,13 @@
 	position: relative;
 }
 
-.influencerLI span{
+.influencerLIName {
 	font-weight: bold;
+	cursor: pointer;
+}
+
+.influencerLIName:hover {
+	font-weight: 1000;
 }
 
 .msgBtn {
@@ -64,7 +69,7 @@
 	top: 30px;
 	right: -8%;
 	background-color: #b4a5a5;
-	min-width: 10%;
+	min-width: 12%;
 	z-index: 1;
 }
   
@@ -78,4 +83,5 @@
   
 .social a:hover {
 	background-color: #ddd;
+	font-weight: 700;
 }

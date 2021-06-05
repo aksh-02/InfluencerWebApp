@@ -8,6 +8,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strconv"
 	"time"
 
 	"github.com/aksh-02/Influencers/server/models"
@@ -210,6 +211,9 @@ func ApplyAsInfluencer(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("Already applied as an Influencer")
 		json.NewEncoder(w).Encode("You've already applied as an Influencer")
 	} else {
+		influencer.Stats.Rank = 0
+		influencer.Stats.Reach = ""
+		influencer.Reviews = make([]models.Review, 0)
 		insResp, err := models.InfluencersCollection.InsertOne(context.Background(), influencer)
 		if err != nil {
 			log.Fatal(err)
@@ -280,6 +284,34 @@ func InfluencerPic(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Influencers updated: ", updResp.ModifiedCount)
 
 	json.NewEncoder(w).Encode("InfluencerPic uploaded Successfully.")
+}
+
+func SubmitReview(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Origin", allowOrigin)
+	w.Header().Set("Access-Control-Allow-Credentials", "true")
+	var revInfo map[string]interface{}
+	err := json.NewDecoder(r.Body).Decode(&revInfo)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(revInfo)
+	var review models.Review
+	review.Rating, err = strconv.Atoi(revInfo["rating"].(string))
+	if err != nil {
+		review.Rating = 0
+		fmt.Println("Error parsing rating", err)
+	}
+	review.Comments = revInfo["comments"].(string)
+	review.Reviewer = revInfo["reviewer"].(string)
+
+	filter := bson.M{"username": revInfo["influencerName"]}
+	update := bson.M{"$push": bson.M{"reviews": review}}
+	updResp, err := models.InfluencersCollection.UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Influencers updated: ", updResp.ModifiedCount)
+	json.NewEncoder(w).Encode("Review added Successfully.")
 }
 
 func TestPoint(w http.ResponseWriter, r *http.Request) {

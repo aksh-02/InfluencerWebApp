@@ -24,6 +24,7 @@ func Router() *mux.Router {
 
 	// profile pic upload
 	router.HandleFunc("/upload", auth.IsAuthorized(auth.InfluencerPic)).Methods("POST", "OPTIONS")
+	router.HandleFunc("/submitreview", auth.SubmitReview).Methods("POST", "OPTIONS")
 
 	// messaging
 	router.HandleFunc("/sendmessage", messaging.SendMessage).Methods("POST", "OPTIONS")
@@ -38,6 +39,6 @@ func Router() *mux.Router {
 	router.HandleFunc("/", middleware.GetVerifiedInfluencers).Methods("GET", "OPTIONS")
 	router.HandleFunc("/all", middleware.GetAllInfluencers).Methods("GET", "OPTIONS")
 	router.HandleFunc("/unverified", middleware.GetUnVerifiedInfluencers).Methods("GET", "OPTIONS")
-	router.HandleFunc("/influencers/{id}", middleware.GetInfluencer).Methods("GET", "OPTIONS")
+	router.HandleFunc("/influencer/{username}", middleware.GetInfluencer).Methods("GET", "OPTIONS")
 	return router
 }

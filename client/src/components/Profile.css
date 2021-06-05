@@ -1,0 +1,133 @@
+.inflDetails span {
+	display: block;
+	text-align: left;
+	margin-left: 1em;
+	margin-right: 3em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.inflDetails header {
+	display: block;
+	margin: 1em;
+	font-weight: bold;
+}
+
+.inflDetails {
+	display: inline-block;
+	border: 5px solid grey;
+	margin: 1em 2em;
+	position: absolute;
+	left: 10px;
+	border-radius: 8px;
+	width: 30%
+}
+
+.inflStats {
+	display: inline-block;
+	border: 2px solid grey;
+	margin: 1em;
+	border-radius: 8px;
+}
+
+.inflStats span {
+	display: block;
+	text-align: left;
+	margin: 1em 2em;
+}
+
+.inflProfileImage {
+	display: inline-block;
+	border-radius: 50%;
+	border: 3px solid darkgray;
+	width: 8em;
+	height: 8em;
+}
+
+.inflReviews {
+	margin: 30px;
+	border: 2px solid black;
+	border-radius: 0.4em;
+	background-color: white;
+	height: 20em;
+	width: 40%;
+	margin-left: 40%;
+	position: relative;
+}
+
+.inflStats {
+	margin: 30px;
+	border: 2px solid black;
+	border-radius: 0.4em;
+	background-color: white;
+	height: 10em;
+	width: 40%;
+	margin-left: 22.3%;
+}
+
+.reviewForm {
+	margin: 10px;
+	border: 2px solid black;
+	border-radius: 0.4em;
+	background-color: rgb(169, 222, 255);
+	width: 80%;
+	display: inline-block;
+}
+
+.reviewForm input {
+	width: 80%;
+	margin: 1em;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+}
+
+.reviewForm textarea {
+	height: 5em;
+	width: 80%;
+	margin: 1em;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	resize: vertical;
+}
+
+.submitBtn {
+	background-color: rgb(68, 165, 68);
+	color: white;
+	margin: 1em auto;
+	margin-right: 1em;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.cancelBtn {
+	background-color: red;
+	color: white;
+	margin: 1em auto;
+	margin-left: 1em;
+	padding: 10px;
+	border: 1px solid black;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.reviewBtn {
+	position: absolute;
+	top: 8px;
+	right: 5px;
+	border-radius: 5px;
+	background-color: rgb(61, 60, 57);
+	padding: 5px;
+	color: white;
+	cursor: pointer;
+}
+
+.nra {
+	margin-top: 90px;
+}

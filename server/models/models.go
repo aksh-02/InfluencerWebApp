@@ -26,6 +26,17 @@ type SocialMediaProfiles struct {
 	Youtube   string `json:"youtube,omitempty"`
 }
 
+type Review struct {
+	Rating   int    `json:"rating" bson:"rating"`
+	Comments string `json:"comments" bson:"comments"`
+	Reviewer string `json:"reviewer" bosn:"reviewer"`
+}
+
+type Stats struct {
+	Rank  int    `json:"rank" bson:"rank"`
+	Reach string `json:"reach" bson:"reach"`
+}
+
 type Influencer struct {
 	Id             primitive.ObjectID  `json:"_id,omitempty" bson:"_id,omitempty"`
 	Username       string              `json:"username" bson:"username"`
@@ -35,7 +46,9 @@ type Influencer struct {
 	Country        string              `json:"country" bson:"country"`
 	Domains        []string            `json:"domains" bson:"domains"`
 	Social         SocialMediaProfiles `json:"social" bson:"social"`
-	ProfilePicture string              `json:"profilePicture,omitempty" bson:"profilePicture,omitempty"`
+	ProfilePicture string              `json:"profilePicture" bson:"profilePicture"`
+	Stats          Stats               `json:"stats" bson:"stats"`
+	Reviews        []Review            `json:"reviews" bson:"reviews"`
 }
 
 type Message struct {

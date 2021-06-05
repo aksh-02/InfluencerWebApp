@@ -11,6 +11,7 @@ import ActiveJobs from './components/ActiveJobs';
 import CreateJob from './components/CreateJob';
 import PrivateRoute from './components/PrivateRoute'
 import Alert from './components/Alert';
+import Profile from './components/Profile'
 
 
 function App() {
@@ -33,6 +34,9 @@ function App() {
           </PrivateRoute>
           <Route path="/" exact>
             <VerifiedInfluencers />
+          </Route>
+          <Route path="/influencer/:inflUsername">
+            <Profile />
           </Route>
           <Route path="/jobs" exact>
             <ActiveJobs />

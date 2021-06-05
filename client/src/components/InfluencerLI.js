@@ -3,19 +3,20 @@ import './InfluencerLI.css'
 import MessageBox from './MessageBox'
 import {useSelector, useDispatch} from 'react-redux'
 import { showAlertAction } from '../actions'
+import {useHistory} from 'react-router-dom'
 
 
-function InfluencerLI(props) {
+function InfluencerLI({ influencer }) {
+	const history = useHistory()
+
     const loggedIn = useSelector(state => state.loggedIn)
 	const dispatch = useDispatch()
 
 	const [messageBox, setMessageBox] = useState(false)
 	const [drop, setDrop] = useState(false)
 	let profilePicture = "influencerPictures/default-avatar.jpg"
-	try {
-		profilePicture = "influencerPictures/" + props.influencer.profilePicture.split('\\')[4]
-	} catch {
-		
+	if (influencer.profilePicture !== "") {
+		profilePicture = "influencerPictures/" + influencer.profilePicture.split('\\')[4]
 	}
 
 	const showMessageBox = () => {
@@ -38,22 +39,26 @@ function InfluencerLI(props) {
 		document.removeEventListener('click', closeDrop);
 	}
 
+	const goToProfile = () => {
+		history.push(`influencer/${influencer.username}`)
+	}
+
 	console.log("alert", alert)
 	return (
 		<>
 		<div className="influencerLI">
 			<img className="influencerLIImage" alt="Avatar" src={profilePicture}></img>
-			<span>{props.influencer.name}</span>
+			<span className="influencerLIName" onClick={goToProfile}>{influencer.name}</span>
 			<button onClick={() => setDrop(!drop)} className="dropBtn">Social {drop?"▲":"▼"}</button>
 			{drop? 
   			<div className="social">
-			  	<a target="_blank" rel="noreferrer" href={props.influencer.social.instagram}>Instagram</a>
-				<a target="_blank" rel="noreferrer" href={props.influencer.social.twitter}>Twitter</a>
-				<a target="_blank" rel="noreferrer" href={props.influencer.social.youtube}>Youtube</a>
+			  	<a target="_blank" rel="noreferrer" href={influencer.social.instagram}>Instagram</a>
+				<a target="_blank" rel="noreferrer" href={influencer.social.twitter}>Twitter</a>
+				<a target="_blank" rel="noreferrer" href={influencer.social.youtube}>Youtube</a>
   			</div>:null}
 			<button className="msgBtn" onClick={showMessageBox}>Message</button>
 		</div>
-		{messageBox? <MessageBox close={() => setMessageBox(!messageBox)} receiver={props.influencer.username}/> : null}
+		{messageBox? <MessageBox close={() => setMessageBox(!messageBox)} receiver={influencer.username}/> : null}
 		</>
 	)
 }
