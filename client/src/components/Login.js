@@ -24,11 +24,10 @@ function Login() {
 		}
 	}, [state])
 
-	const endpoint = "http://localhost:8080/"
 	const loginSubmit = (event) => {
 
 		axios.post(
-			endpoint+"signin",
+			"signin",
 			{
 				username: username,
 				password: password
@@ -58,7 +57,7 @@ function Login() {
 		<div>
 			<form className="authForm" onSubmit={loginSubmit}>
 				<input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} type="text"></input>
-				<input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="text"></input>
+				<input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password"></input>
 				<button type="submit">Submit</button>
 			</form>
 		</div>

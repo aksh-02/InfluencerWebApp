@@ -15,11 +15,10 @@ function Signup() {
 	const [email, setEmail] = useState("")
 	const history = useHistory()
 
-	const endpoint = "http://localhost:8080/"
 	const signupSubmit = (event) => {
 
 		axios.post(
-			endpoint+"signup",
+			"/signup",
 			{
 				username: username,
 				password: password,
@@ -44,8 +43,8 @@ function Signup() {
 		<div>
 			<form className="authForm" onSubmit={signupSubmit}>
 				<input placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} type="text"></input>
-				<input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="text"></input>
-				<input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="text"></input>
+				<input placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} type="password"></input>
+				<input placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} type="email"></input>
 				<button type="submit">Submit</button>
 			</form>
 		</div>

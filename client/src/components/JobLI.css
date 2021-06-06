@@ -16,10 +16,14 @@
 	font-weight: bold;
 }
 
-.jobLIHeader{
+.jobLIHeader {
 	margin-top: 12px;
 	background-color: lightgrey;
 	cursor: pointer;
+}
+
+.jobLIHeader:hover {
+	background-color: #cac48f;
 }
 
 .jobLI button{

@@ -1,2 +1,4 @@
 todo.txt
 /client/public/influencerPictures
+Dockerfile
+.dockerignore

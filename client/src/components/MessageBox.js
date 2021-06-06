@@ -10,10 +10,9 @@ const MessageBox = (props) => {
     const username = useSelector(state => state.username)
 	console.log("rec", props.receiver)
 
-	const endpoint = "http://localhost:8080/"
 	const checkMessages = () => {
 		axios.post(
-			endpoint+"checkmessages",
+			"checkmessages",
 			{
 				sender: username,
 				receiver: props.receiver
@@ -22,7 +21,7 @@ const MessageBox = (props) => {
 				headers: {
 				  'Content-Type': 'application/x-www-form-urlencoded'
 				},
-				// withCredentials: true
+				withCredentials: true
 		}).then(resp => {
 			console.log(resp)
 			if (resp.data != null) {
@@ -46,7 +45,7 @@ const MessageBox = (props) => {
 
 	const sendMessage = (event) => {
 		axios.post(
-			endpoint+"sendmessage",
+			"sendmessage",
 			{
 				message: message,
 				sender: username,
@@ -56,7 +55,7 @@ const MessageBox = (props) => {
 				headers: {
 				  'Content-Type': 'application/x-www-form-urlencoded'
 				},
-				// withCredentials: true
+				withCredentials: true
 		}).then(resp => {
 			setMessage("")
 			console.log(resp)

@@ -185,7 +185,7 @@ func Logout(w http.ResponseWriter, r *http.Request) {
 		w.WriteHeader(http.StatusBadRequest)
 		return
 	}
-	fmt.Printf("Logging out for %v", claims.Username)
+	fmt.Printf("Logging out for %v\n", claims.Username)
 
 	jwtCookie, err := generateToken(claims.Username, -5)
 	if err != nil {

@@ -11,10 +11,9 @@ function CreateJob() {
 	const [details, setDetails] = useState("")
 	const [compensation, setCompensation] = useState("")
 
-	const endpoint = "http://localhost:8080/"
 	const createJobSubmit = (event) => {
 		axios.post(
-			endpoint+"createjob",
+			"createjob",
 			{
 				title: title,
 				details: details,
@@ -25,7 +24,7 @@ function CreateJob() {
 				headers: {
 				  'Content-Type': 'application/x-www-form-urlencoded'
 				},
-				// withCredentials: true
+				withCredentials: true
 		}).then(resp => {
 			console.log(resp)
 		}).catch(err => {

@@ -16,10 +16,8 @@ const VerifiedInfluencers = () => {
 		}
 	}
 
-	const endpoint = "http://localhost:8080/"
 	useEffect(() => {
-		axios.get(endpoint,
-		// {withCredentials: true}
+		axios.get("http://localhost:8080",
 		{
 			params:options
 		}).then(resp => {
