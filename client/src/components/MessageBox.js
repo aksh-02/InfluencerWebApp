@@ -10,9 +10,10 @@ const MessageBox = (props) => {
     const username = useSelector(state => state.username)
 	console.log("rec", props.receiver)
 
+	const endpoint = "http://localhost:8080/"
 	const checkMessages = () => {
 		axios.post(
-			"checkmessages",
+			endpoint+"checkmessages",
 			{
 				sender: username,
 				receiver: props.receiver
@@ -45,7 +46,7 @@ const MessageBox = (props) => {
 
 	const sendMessage = (event) => {
 		axios.post(
-			"sendmessage",
+			endpoint+"sendmessage",
 			{
 				message: message,
 				sender: username,

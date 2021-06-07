@@ -15,8 +15,9 @@ function Profile() {
 	let profPic = "/influencerPictures/default-avatar.jpg"
 	const { inflUsername } = useParams()
 
+	const endpoint = "http://localhost:8080/"
 	useEffect(() => {
-		axios.get(`influencer/${inflUsername}`)
+		axios.get(endpoint+`influencer/${inflUsername}`)
 		.then((resp) => {
 			setInfluencer(resp.data)
 			setAvgRating(avgRatingCalc())
@@ -33,7 +34,7 @@ function Profile() {
 
 	const submitReview = (event) => {
 		axios.post(
-			"submitreview",
+			endpoint+"submitreview",
 			{
 				rating: review["rating"],
 				comments: review["comments"],

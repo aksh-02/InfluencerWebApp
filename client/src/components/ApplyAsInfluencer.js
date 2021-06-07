@@ -37,11 +37,12 @@ function ApplyAsInfluencer() {
 	// if user have already applied, don't upload his picture
 	const [applied, setApplied] = useState(false)
 
+	const endpoint = "http://localhost:8080/"
 	const applySubmit = (event) => {
 		event.preventDefault()
 
 		axios.post(
-			"apply",
+			endpoint+"apply",
 			{
 				username: username,
 				name: influencer.name,
@@ -89,7 +90,7 @@ function ApplyAsInfluencer() {
 		formData.append('userData', blob)
 
 		axios.post(
-			"upload",
+			endpoint+"upload",
 			formData,
 			{
 				headers: {

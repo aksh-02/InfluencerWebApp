@@ -15,10 +15,11 @@ function Signup() {
 	const [email, setEmail] = useState("")
 	const history = useHistory()
 
+	const endpoint = "http://localhost:8080/"
 	const signupSubmit = (event) => {
 
 		axios.post(
-			"/signup",
+			endpoint+"/signup",
 			{
 				username: username,
 				password: password,

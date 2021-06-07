@@ -12,8 +12,9 @@ function Navbar() {
     
     const history = useHistory()
 
+    const endpoint = "http://localhost:8080/"
     const logoutHandler = () => {
-        axios.get("logout", {withCredentials: true}).then(resp => {
+        axios.get(endpoint+"logout", {withCredentials: true}).then(resp => {
             console.log(resp);
             dispatch(toggleLoginAction())
 			history.push("/signin")

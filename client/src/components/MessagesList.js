@@ -8,9 +8,10 @@ function MessagesList() {
     const username = useSelector(state => state.username)
 	const [messages, setMessages] = useState([])
 
+	const endpoint = "http://localhost:8080/"
 	useEffect(() => {
 		axios.post(
-			"checkallmessages",
+			endpoint+"checkallmessages",
 			{
 				username: username,
 			},

@@ -11,9 +11,10 @@ function CreateJob() {
 	const [details, setDetails] = useState("")
 	const [compensation, setCompensation] = useState("")
 
+	const endpoint = "http://localhost:8080/"
 	const createJobSubmit = (event) => {
 		axios.post(
-			"createjob",
+			endpoint+"createjob",
 			{
 				title: title,
 				details: details,

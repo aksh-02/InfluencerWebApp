@@ -6,8 +6,9 @@ import JobLI from './JobLI'
 const ActiveJobs = () => {
 	const [aJobs, setAJobs] = useState([])
 
+	const endpoint = "http://localhost:8080/"
 	useEffect(() => {
-		axios.get("jobs",
+		axios.get(endpoint+"jobs",
 		// {withCredentials: true}
 		).then(resp => {
 			setAJobs(resp.data)
